@@ -8,6 +8,7 @@ import useStyles from './styles'
 import logo from './images/logo.png'
 
 function App () {
+   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch()
   const classes = useStyles()
 
@@ -19,17 +20,17 @@ function App () {
     <div>
       <Container maxWidth='lg'>
         <AppBar className={classes.appBar} position='static' color='inherit'>
-          <Typography className={classes.heading} variant='h2' align='center'>Green Review</Typography>
+          <Typography className={classes.heading} variant='h2' align='center'>Experience</Typography>
           <img className={classes.image} src={logo} alt='icon' height='60' />
         </AppBar>
         <Grow in>
           <Container>
-            <Grid container justify='space-between' alignItems='stretch' spacing={3}>
+            <Grid container justify='space-between' className={classes.mainContainer} alignItems='stretch' spacing={3}>
               <Grid item xs={12} sm={7}>
-                <Posts />
+                <Posts setCurrentId={setCurrentId} />
               </Grid>
               <Grid item xs={12} sm={4}>
-                <Form />
+                <Form currentId={currentId} setCurrentId={setCurrentId} />
               </Grid>
             </Grid>
           </Container>

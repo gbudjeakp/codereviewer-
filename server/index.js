@@ -18,7 +18,7 @@ app.use('/user', userRoutes)
 app.use('/posts', postRoutes)
 
 app.get('/', (req, res) => {
-  res.send('Welcome to the Experience API')
+  res.send('Welcome to the complete Experience API')
 })
 
 // MONGO_URL=mongodb+srv://admin-baz:sweetcaroline@cluster0.a17sv.mongodb.net/<dbname>?retryWrites=true&w=majority

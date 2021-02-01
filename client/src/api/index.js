@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: process.env.REACT_APP_SERVER_API })
-// process.env.REACT_APP_SERVER_API
+const API = axios.create({ baseURL: 'https://experience-project.herokuapp.com' })
+
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
     req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`
@@ -10,12 +10,11 @@ API.interceptors.request.use((req) => {
   return req
 })
 
-
 export const fetchPosts = () => API.get('/posts')
 export const createPost = (newPost) => API.post('/posts', newPost)
+export const likePost = (id) => API.patch(`/posts/${id}/likePost`)
 export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost)
 export const deletePost = (id) => API.delete(`/posts/${id}`)
-export const likePost = (id) => API.patch(`/posts/${id}/likePost`)
 
 export const logIn = (formData) => API.post('/user/login', formData)
 export const signUp = (formData) => API.post('/user/signup', formData)
